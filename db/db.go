@@ -30,7 +30,7 @@ func EnsureDB() *sql.DB {
 
 		query := `CREATE TABLE IF NOT EXISTS "scheduler" (
 				"id" INTEGER NOT NULL UNIQUE,
-				"date" DATE NOT NULL DEFAULT "",
+				"date" CHAR(8) NOT NULL DEFAULT "",
 				"title" VARCHAR(128) NOT NULL DEFAULT "",
 				"comment" TEXT NOT NULL DEFAULT "",
 				"repeat" VARCHAR(128) NOT NULL DEFAULT "",

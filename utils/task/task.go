@@ -36,12 +36,14 @@ func (t *Task) CheckTitle() error {
 }
 
 func (t *Task) CheckData() (time.Time, error) {
+	now := time.Now().Format(config.Layout)
+	parsed_now, _ := time.Parse(config.Layout, now)
 	if t.Date == "" {
-		t.Date = time.Now().Format(config.Layout)
+		t.Date = now
 	}
 	parseDate, err := time.Parse(config.Layout, t.Date)
 	if err != nil {
-		return time.Time{}, fmt.Errorf(`{"error":"Дата указана в неверном формате"}`)
+		return parsed_now, fmt.Errorf(`{"error":"Дата указана в неверном формате"}`)
 	}
 	return parseDate, nil
 }

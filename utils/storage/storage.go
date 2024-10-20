@@ -173,5 +173,6 @@ func (s *Store) DoneTask(id string) error {
 	if err != nil {
 		return fmt.Errorf(`{"error":"Ошибка обновления даты выполнения задачи"}`)
 	}
+	fmt.Println(task)
 	return nil
 }
